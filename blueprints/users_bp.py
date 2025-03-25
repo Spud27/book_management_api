@@ -61,8 +61,8 @@ def create_new_user():
     except IntegrityError:
         return {"error": "Username, Email or Password already in use"}, 409
 
-# Update - PUSH /users/<int:user_id>
-@users_bp.route('/users/<int:user:id>', method=['PUSH'])
+# Update - PUT /users/<int:user_id>
+@users_bp.route('/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
     stmt = db.select(User).filter_by(user_id=user_id)
     user = db.session.scalar(stmt)

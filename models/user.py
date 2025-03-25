@@ -12,6 +12,8 @@ class User(db.Model):
     email = db.Column(db.String(200), nullable=False, unique=True)
     password = db.Column(db.String(50), nullable=False, unique=True)
 
+    reviews = db.relationship('Review', back_populates = 'user')
+
 class UserSchema (ma.Schema):
     # Validation
     email = Email(required=True)
